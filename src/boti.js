@@ -3,6 +3,7 @@ const store = {
 	'бири': ':beers:',
 	'биричка': ':beer:',
 	'ракия': ':tumbler_glass:',
+	'ракия': ':fire: :tumbler_glass:',
 	'уиски': ':tumbler_glass:',
 	'узо': ':tumbler_glass:',
 	'саке': ':sake:',
@@ -10,25 +11,18 @@ const store = {
 	'коняк': ':tumbler_glass:',
 	'коктейл': ':cocktail:',
 	'ликьор': ':cocktail:',
-	'вино': ':wine_glass:',
-	'винце': ':wine_glass:',
+	'вино|винце': ':wine_glass:',
 	'шампанско': ':champagne:',
 	'кола': ':cup_with_straw:',
-	'фанта': ':tropical_drink:',
+	'фанта|швепс': ':tropical_drink:',
 	'спрайт': ':cup_with_straw:',
-	'пиене': ':beers:',
-	'пиво': ':beers:',
-	'кафе': ':coffee:',
-	'капучино': ':coffee:',
-	'чай': ':tea:',
-	'чайче': ':tea:',
-	'мляко': ':milk:',
-	'млекце': ':milk:',
+	'пиене|пиво': ':beers:',
+	'кафе|капучино': ':coffee:',
+	'чай|чайче': ':tea:',
+	'мляко|млекце': ':milk:',
 	'кекс': ':pie:',
-	'торта': ':cake:',
-	'тортичка': ':cake:',
-	'бисквита': ':cookie:',
-	'бисквитка': ':cookie:',
+	'торта|тортичка': ':cake:',
+	'бисквита|бисквитка': ':cookie:',
 	'бисквитки': ':cookie: :cookie:',
 	'грапе': '::',
 	'закуска': ':pretzel: :hamburger:',
@@ -41,8 +35,7 @@ const store = {
 	'фъстъци': ':peanuts:',
 	'спагети': ':spaghetti:',
 	'суши': ':sushi:',
-	'сметана': ':baby_bottle:',
-	'сметанка': ':baby_bottle:',
+	'сметана|сметанка': ':baby_bottle:',
 	'салата': ':salad:',
 	'палачинки': ':pancakes:',
 	'ориз': ':rice:',
@@ -52,8 +45,7 @@ const store = {
 	'вода|дихидроген монооксид': ':potable_water:',
 	'музика': ':musical_score:',
 	'изсвири': ':musical_keyboard: :saxophone: :guitar:',
-	'филм': ':clapper:',
-	'гледане': ':clapper:',
+	'филм|гледане': ':clapper:',
 	'книга': ':green_book:',
 	'четене': ':books:',
 	'прасков[аи]': ':peach:',
@@ -81,8 +73,16 @@ const store = {
 	'морков[аи]?': ':carrot:',
 	'картоф[аи]': ':potato:',
 	'сладки картофи': ':sweet_potato:',
+	'пържени картофи|пържени картофки': ':fries:',
 	'шоколад': ':chocolate_bar:',
 	'пуканки': ':popcorn:',
+	'компот': 'компот',
+	'WC': ':restroom:',
+	'3 в 1': [':coffee: и още нещо', 'Качили се три блондинки в едно такси.'],
+	'огънче': [':fire:', ':firecracker:', 'Аз да не съм Прометей, бе!'],
+	'салам|суджук|наденица|луканка|кренвирши|пастърма|саздърма|телешко|агнешко|месо': '(боб и леща)',
+	'аспирин': ':pill:',
+	'браузър|браузер': ':fire: :fox:',
 };
 const prefixes = [
 	'Заповядай!',
@@ -104,12 +104,13 @@ const giveUpResponses = [
 	'Тцъ.',
 	'Не мога.',
 	'Това ако знаех какво е...',
+	'Надценяваш ме.',
 	'Малко ме надценяваш.',
-	'Наистина ме надценяваш.',
+	'Доста ме надценяваш.',
 	'Май искаш нещо от мене, а? :slight_smile:',
 	'Трябва да питам тате.',
 	'Чакай малко!',
-	'Уф, това пък какво е...',
+	'Оф, това пък какво е...',
 	'А това какво е?',
 	'Трябва да проверя.',
 	'Все „искам, искам“. А на мене кой ще даде?...',
@@ -119,6 +120,10 @@ const giveUpResponses = [
 	'Да ти разкажа виц? Ама трябва да обещаеш, че ще се смееш.',
 	'Трябва да видя.',
 	'Една баба се надвеси от прозореца от прекомерно любопитство, падна и се преби.',
+	'Ще ме побъркаш.',
+	'Човек, много неща мога, ама ти ще ме побъркаш.',
+	'В почивка съм.',
+	'Всеки ден съм на работа, а ти?',
 	'Ла-ла-ла.',
 ];
 
@@ -166,9 +171,9 @@ const standardRequests = {
 		'Утре пак.',
 		'Хайде лягай! Аз ще вардя чата.',
 		'Утре пак ще говорим.',
-		'Винце греяно пийни и цял нощ за мен мисли.',
+		'Винце греяно пийни и цяла нощ за мен мисли.',
 		'Наспи се добре!',
-		'Хайде! Утре пак на линия.',
+		'Лека! Утре пак на линия.',
 	],
 	'наздраве': [
 		':champagne_glas:',
@@ -177,6 +182,34 @@ const standardRequests = {
 		'Наздраве! :wine_glass:',
 		'Да сме живи и здрави! :wine_glass:',
 	],
+	'тук ли си': [
+		'Да, тук съм.',
+		'Да, стоя си в ъгъла и чакам.',
+		'Да, какво има?',
+		'Да, искаш ли нещо?',
+		'Да ти помогна с нещо?',
+		'Да, кажи!',
+		'Да, на денонощно дежурство съм.',
+		'Да, дежуря по цял ден.',
+		'Да, няма къде да избягам.',
+		'Да, седя и чакам.',
+		'Да, това ми е новото любимо място.',
+	],
+	'(беше|си) ли в почивка': [
+		'Почивката ми току-що свърши.',
+		'Току-що свърши.',
+		'Свърши вече.',
+		'Да, но вече приключи.',
+		'Да, ама нещо къса излезе.',
+	],
+	'върви да спиш|махай се|излез от чата': [
+		'Гониш ли ме?',
+		'Защо?',
+		'Сега пък какво направих?',
+		'И таз добра. А кой ще налива бира?',
+		'Хайде, успокой се малко!',
+		'Почини си малко и утре пак ще говорим.',
+	],
 }
 
 const products = Object.keys(store);
@@ -184,7 +217,7 @@ const giveFromStore = function(request, res) {
 	let responses = []
 	products.forEach(product => {
 		if (new RegExp(product, 'i').test(request)) {
-			responses.push(store[product])
+			responses.push(Array.isArray(store[product]) ? res.random(store[product]) : store[product])
 		}
 	})
 	if (responses.length === 0) {
@@ -205,21 +238,25 @@ module.exports = (robot) => {
 		robot.logger.info('CM: '+ currentMessage)
 	})
 
-	robot.respond(/tell me a joke|виц|можеш ли да ми (разкажеш|кажеш|пуснеш) виц/i, (res) => {
-		if (hasResponded) {
-			return
-		}
+	robot.respond(/.*виц (за|от) (.+)/i, (res) => {
+		if (hasResponded) return
+		hasResponded = true
+
+		const theme = res.match[2].trim().replace(/ +/, '-').replace(/[!?]/, '')
+		const url = `https://smehurko.chitanka.info/jokes/${theme}/random.txt`
+		robot.logger.info('url: '+ url)
+		res.http(url).get()( (err, res2, body) => res.send(body) )
+	})
+
+	robot.respond(/виц|можеш ли да ми (разкажеш|кажеш|пуснеш) виц/i, (res) => {
+		if (hasResponded) return
 		hasResponded = true
 
 		const url = 'https://smehurko.chitanka.info/jokes/random.txt'
-		fetch(url)
-			.then(response => { return response.text() })
-			.then(text => {
-				res.send(text)
-			})
+		res.http(url).get()( (err, res2, body) => res.send(body) )
 	})
 
-	const test = new RegExp('.*(' + products.join('|') + ').*', 'i')
+	const test = new RegExp('.*\b(' + products.join('|') + ')\b.*', 'i')
 	robot.respond(test, (res) => {
 		if (hasResponded) {
 			return
