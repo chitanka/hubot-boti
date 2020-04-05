@@ -256,7 +256,7 @@ module.exports = (robot) => {
 		res.http(url).get()( (err, res2, body) => res.send(body) )
 	})
 
-	const test = new RegExp('.*\b(' + products.join('|') + ')\b.*', 'i')
+	const test = new RegExp('.*(' + products.join('|') + ').*', 'i')
 	robot.respond(test, (res) => {
 		if (hasResponded) {
 			return
