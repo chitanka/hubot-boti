@@ -86,6 +86,7 @@ const store = {
 	'аспирин': ':pill:',
 	'браузър|браузер': ':fire: :fox:',
 	'лицеви опори': ':person_swimming:',
+	'заря|фойерверк': ':fireworks: :fireworks: :fireworks:',
 };
 const prefixes = [
 	'Заповядай!',
